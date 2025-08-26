@@ -1,5 +1,7 @@
 <x-layouts.home.app>
-    <h1 class="text-black text-4xl">
-        Hello, welcome to the home page!
-    </h1>
+    <x-general.header>
+        <x-general.app-logo/>
+
+
+    </x-general.header>
 </x-layouts.home.app>
