@@ -1,12 +1,24 @@
 <x-layouts.home.app>
     <x-general.header>
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between lg:w-11/12 lg:m-auto xl:w-10/12 2xl:w-9/12">
             <x-general.app-logo/>
+
+            <!-- Desktop Menu -->
+
+            <div class="hidden md:flex justify-between gap-6">
+                <flux:link href="#" class="no-underline! text-sm lg:text-base hover:text-blue-500">Caracteristicas</flux:link>
+                <flux:link href="#" class="no-underline! text-sm lg:text-base hover:text-blue-500">Precios</flux:link>
+                <flux:link href="#" class="no-underline! text-sm lg:text-base hover:text-blue-500">Contacto</flux:link>
+            </div>
+
+            <x-general.button>
+                Iniciar Sesión
+            </x-general.button>
 
             <flux:button command="show-modal" commandfor="drawer" icon="bars-3" class="md:hidden"></flux:button>
         </div>
 
-
+        <!-- Mobile Menu -->
         <el-dialog>
             <dialog id="drawer" aria-labelledby="drawer-title"
                     class="fixed inset-0 size-auto max-h-none max-w-none overflow-hidden bg-transparent backdrop:bg-transparent">
