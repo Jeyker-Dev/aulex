@@ -4,4 +4,6 @@
     </x-general.header>
 
     <x-home.hero/>
+
+    <x-home.characteristics/>
 </x-layouts.home.app>
