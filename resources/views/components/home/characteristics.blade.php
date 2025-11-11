@@ -25,7 +25,7 @@
 
 @endphp
 
-<div class="w-11/12 sm:w-9/12 mx-auto mt-10 flex flex-col gap-4">
+<div class="w-11/12 sm:w-9/12 md:w-11/12 lg:w-10/12 mx-auto mt-10 flex flex-col gap-4">
     <x-general.title>
         Características Principales
     </x-general.title>
@@ -34,14 +34,16 @@
         Todo lo que necesitas para crear una experiencia educativa excepcional
     </x-general.text>
 
-    @foreach($characteristics as $characteristic)
-        <flux:card class="space-y-6 hover:shadow-md flex flex-col justify-center items-center py-8!">
-            <flux:icon name="{{ $characteristic['icon'] }}" variant="solid" class="text-blue-500 size-16"/>
+    <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-8">
+        @foreach($characteristics as $characteristic)
+            <flux:card class="space-y-6 hover:shadow-md flex flex-col justify-center items-center py-16!">
+                <flux:icon name="{{ $characteristic['icon'] }}" variant="solid" class="text-blue-500 size-16"/>
 
-            <div>
-                <flux:heading class="text-center text-xl md:text-2xl">{{ $characteristic['heading'] }}</flux:heading>
-                <flux:text class="mt-2 text-center md:text-base">{{ $characteristic['text'] }}</flux:text>
-            </div>
-        </flux:card>
-    @endforeach
+                <div>
+                    <flux:heading class="text-center text-xl md:text-2xl">{{ $characteristic['heading'] }}</flux:heading>
+                    <flux:text class="mt-2 text-center md:text-base">{{ $characteristic['text'] }}</flux:text>
+                </div>
+            </flux:card>
+        @endforeach
+    </div>
 </div>
