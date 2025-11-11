@@ -6,4 +6,6 @@
     <x-home.hero/>
 
     <x-home.characteristics/>
+
+    <x-home.prices/>
 </x-layouts.home.app>
