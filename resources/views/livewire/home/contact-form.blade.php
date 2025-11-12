@@ -7,7 +7,7 @@ new class extends Component {
 }; ?>
 
 <div>
-    <div class="flex flex-col gap-6 w-11/12 sm:w-10/12 mx-auto mt-6">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-6">
         <form class="border border-gray-200 p-6">
             <div class="flex flex-col gap-2 justify-start">
                 <flux:heading class="font-bold! text-black!" size="xl">
@@ -68,7 +68,7 @@ new class extends Component {
                 ];
             @endphp
 
-            <div class="">
+            <div class="mt-6">
                 <div class="flex flex-col justify-start items-center w-full gap-4">
                     @foreach($contact_texts as $contact_text)
                         <div class="w-full flex justify-start items-center gap-2">
