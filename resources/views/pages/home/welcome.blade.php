@@ -12,4 +12,6 @@
     <x-home.contact/>
 
     <x-home.questions/>
+
+    <x-home.footer/>
 </x-layouts.home.app>
