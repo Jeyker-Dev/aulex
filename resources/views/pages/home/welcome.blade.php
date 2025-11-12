@@ -8,4 +8,6 @@
     <x-home.characteristics/>
 
     <x-home.prices/>
+
+    <x-home.contact/>
 </x-layouts.home.app>
