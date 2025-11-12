@@ -39,4 +39,12 @@
             </flux:card>
         @endforeach
     </div>
+
+    <div class="flex flex-col justify-center items-center gap-4 my-6">
+        <flux:text class="mt-2">¿No encontraste la respuesta que buscabas?</flux:text>
+
+        <x-general.button class="text-center! max-w-36! bg-transparent! text-blue-600! hover:text-black! border border-blue-600 hover:border-black">
+            Contáctanos
+        </x-general.button>
+    </div>
 </div>
