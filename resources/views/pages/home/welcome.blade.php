@@ -10,4 +10,6 @@
     <x-home.prices/>
 
     <x-home.contact/>
+
+    <x-home.questions/>
 </x-layouts.home.app>
