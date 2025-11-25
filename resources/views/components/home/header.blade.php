@@ -9,7 +9,7 @@
         <flux:link href="#" class="no-underline! text-sm lg:text-base hover:text-blue-500">Contacto</flux:link>
     </div>
 
-    <x-general.button>
+    <x-general.button href="{{ route('login') }}">
         Iniciar Sesión
     </x-general.button>
 
