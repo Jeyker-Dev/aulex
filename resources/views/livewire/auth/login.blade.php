@@ -10,6 +10,7 @@ use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Volt\Component;
+use App\Models\User;
 
 new #[Layout('components.layouts.panel.auth')] class extends Component {
     #[Validate('required|string|email')]
@@ -40,7 +41,11 @@ new #[Layout('components.layouts.panel.auth')] class extends Component {
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        $user = User::where('email', $this->email)->first();
+
+        if ($user->role === 'super-admin') {
+            $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        }
     }
 
     /**

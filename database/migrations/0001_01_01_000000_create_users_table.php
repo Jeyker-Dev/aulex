@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('current_organization_id')->nullable()->constrained('organizations')->nullOnDelete();
+            $table->integer('current_organization_id')->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('role');
