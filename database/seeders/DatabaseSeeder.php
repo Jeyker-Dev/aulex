@@ -26,5 +26,9 @@ class DatabaseSeeder extends Seeder
             'role' => 'super-admin',
             'password' => 'J0K3R1178',
         ]);
+
+        $this->call([
+            OrganizationSeeder::class,
+        ]);
     }
 }
