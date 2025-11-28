@@ -1,6 +1,6 @@
 <x-layouts.panel.app :title="__('Dashboard')">
     <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
-        <div class="flex flex-col items-start gap-3">
+        <div class="flex flex-col items-start justify-between gap-3">
             <x-general.subtitle>
                 Panel de Administración
             </x-general.subtitle>
