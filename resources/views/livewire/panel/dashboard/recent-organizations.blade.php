@@ -1,17 +1,46 @@
 <?php
 
+use Illuminate\Support\Collection;
 use Livewire\Volt\Component;
 use App\Models\Organization;
+use Livewire\Attributes\On;
 
 new class extends Component {
-    public function with(): array
+    public ?Collection $organizations = null;
+
+    public function mount(): void
     {
-        return [
-            'organizations' => Organization::query()
-            ->latest()
+        $this->organizations = Organization::query()
+            ->orderBy('created_at', 'desc')
             ->limit(5)
-            ->get(),
-        ];
+            ->get();
+    }
+
+    #[On('sort-organization')]
+    public function sortOrganizations(string $name): void
+    {
+        $this->organizations = Organization::query()
+            ->orderBy($name)
+            ->limit(5)
+            ->get();
+    }
+
+    #[On('filter-by-subscription-status')]
+    public function filterBySubscriptionStatus(string $status): void
+    {
+        $this->organizations = Organization::query()
+            ->where('subscription_status', $status)
+            ->limit(5)
+            ->get();
+    }
+
+    #[On('clear-filter-organizations')]
+    public function clearFilters(): void
+    {
+        $this->organizations = Organization::query()
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
     }
 }; ?>
 
@@ -24,38 +53,12 @@ new class extends Component {
         />
 
         <div class="flex gap-2 items-center">
-            <flux:dropdown>
-                <flux:button icon:trailing="chevron-down">Filters</flux:button>
-
-                <flux:menu>
-                    <flux:menu.item icon="plus">New post</flux:menu.item>
-
-                    <flux:menu.separator />
-
-                    <flux:menu.submenu heading="Sort by">
-                        <flux:menu.radio.group>
-                            <flux:menu.radio checked>Name</flux:menu.radio>
-                            <flux:menu.radio>Date</flux:menu.radio>
-                            <flux:menu.radio>Popularity</flux:menu.radio>
-                        </flux:menu.radio.group>
-                    </flux:menu.submenu>
-
-                    <flux:menu.submenu heading="Filter">
-                        <flux:menu.checkbox checked>Draft</flux:menu.checkbox>
-                        <flux:menu.checkbox checked>Published</flux:menu.checkbox>
-                        <flux:menu.checkbox>Archived</flux:menu.checkbox>
-                    </flux:menu.submenu>
-
-                    <flux:menu.separator />
-
-                    <flux:menu.item variant="danger" icon="trash">Delete</flux:menu.item>
-                </flux:menu>
-            </flux:dropdown>
+            <livewire:panel.dashboard.filter-organizations/>
 
             <flux:button icon="arrow-down-tray" class="size-6"/>
 
             <flux:dropdown>
-                <flux:button icon:trailing="ellipsis-vertical" />
+                <flux:button icon:trailing="ellipsis-vertical"/>
 
                 <flux:menu>
                     <flux:menu.group heading="Acciones rapidas">
@@ -71,7 +74,7 @@ new class extends Component {
         <x-panel.dashboard.organization-card
             :initial="Str::upper(substr($organization->name, 0, 2))"
             :title="$organization->name"
-            badgeText="Enterprise"
+            :badgeText="ucfirst($organization->subscription_status)"
             text="10000 estudiantes"
         />
     @endforeach

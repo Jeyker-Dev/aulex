@@ -20,7 +20,7 @@ class OrganizationFactory extends Factory
         return [
             'name' => $this->faker->company(),
             'slug' => $this->faker->unique()->slug(),
-            'subscription_status' => $this->faker->randomElement(['active', 'inactive', 'trial']),
+            'subscription_status' => $this->faker->randomElement(['basic', 'professional', 'enterprise', 'inactive']),
             'active' => true,
             'owner_id' => User::factory()->admin(),
         ];
