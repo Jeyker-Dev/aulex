@@ -32,6 +32,7 @@ new class extends Component {
                 <flux:menu.item wire:click="filterBySubscriptionStatus('basic')">Basic</flux:menu.item>
                 <flux:menu.item wire:click="filterBySubscriptionStatus('professional')">Professional</flux:menu.item>
                 <flux:menu.item wire:click="filterBySubscriptionStatus('enterprise')">Enterprise</flux:menu.item>
+                <flux:menu.item wire:click="filterBySubscriptionStatus('inactive')">Inactive</flux:menu.item>
             </flux:menu.submenu>
 
             <flux:menu.separator/>

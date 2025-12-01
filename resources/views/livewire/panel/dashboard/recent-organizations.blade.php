@@ -55,7 +55,7 @@ new class extends Component {
         <div class="flex gap-2 items-center">
             <livewire:panel.dashboard.filter-organizations/>
 
-            <flux:button icon="arrow-down-tray" class="size-6"/>
+            <livewire:panel.dashboard.download-organizations/>
 
             <flux:dropdown>
                 <flux:button icon:trailing="ellipsis-vertical"/>

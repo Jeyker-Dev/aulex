@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\OrganizationController;
 
 Route::get('/', function () {
     return view('pages.home.welcome');
@@ -14,6 +15,10 @@ Route::view('dashboard', 'panel.dashboard')
 Route::view('organizations', 'panel.organizations')
     ->middleware(['auth', 'verified'])
     ->name('organizations');
+
+Route::get('organizations/export', [OrganizationController::class, 'export'])
+    ->middleware(['auth', 'verified'])
+    ->name('organizations.export');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
